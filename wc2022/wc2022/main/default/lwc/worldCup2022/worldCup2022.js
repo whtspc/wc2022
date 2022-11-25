@@ -7,7 +7,6 @@ export default class WorldCup2022 extends LightningElement {
     @track data = [];
     @track currentMatch;
 
-    columns = columns;
     logo = WC_QATAR_LOGO;
     @track flags = {
         home: null,
