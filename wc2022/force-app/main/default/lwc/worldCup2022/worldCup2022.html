@@ -1,10 +1,8 @@
 <template>
-    <div style="height: 300px;">
-        <lightning-datatable
-                key-field="id"
-                hide-checkbox-column="true"
-                data={data}
-                columns={columns}>
-        </lightning-datatable>
+    <div style="height: 400px;">
+        <lightning-card>
+            <lightning-datatable key-field="id" hide-checkbox-column="true" data={data} columns={columns}>
+            </lightning-datatable>
+        </lightning-card>
     </div>
 </template>
