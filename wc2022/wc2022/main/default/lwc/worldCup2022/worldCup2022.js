@@ -17,8 +17,6 @@ export default class WorldCup2022 extends LightningElement {
     async connectedCallback() {
 
         this.flagService = new FlagService();
-        this.flags.home = this.flagService.getFlag('NL');
-        this.flags.away = this.flagService.getFlag('EC');
 
         this.currentMatch = await this.getCurrent();
         this.data = await this.getToday();
