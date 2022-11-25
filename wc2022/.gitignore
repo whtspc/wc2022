@@ -23,6 +23,8 @@ yarn-error.log*
 
 # Dependency directories
 node_modules/
+.idea
+/IlluminatedCloud
 
 # Eslint cache
 .eslintcache
