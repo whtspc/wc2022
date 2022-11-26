@@ -85,25 +85,25 @@
 						<div class="slds-col slds-size_1-of-1">
 							<p class="slds-text-heading_small slds-text-align_center slds-text-title_bold slds-p-top_medium">Line-ups</p>
 						</div>
-						<div class="slds-size_1-of-3 slds-p-around_x-small">
+						<div class="slds-size_1-of-2 slds-p-around_x-small">
 							<div class="slds-grid slds-grid_align-space">
 								<div class="slds-col starting_eleven">
 									<template for:each={match.fullEntry.home_team_lineup.starting_eleven} for:item="player">
-										<div key={player.shirt_number}  class="slds-p-around_xx-small slds-size_1-of-1">
-											{player.shirt_number} {player.name}
+										<div key={player.shirt_number}  class="slds-p-around_xx-small slds-size_1-of-1 slds-text-align_center">
+											{player.shirt_number} {player.name} {player.position}
 										</div>
 									</template>
 								</div>
-								<div class="slds-col substitutes">
+								<!-- <div class="slds-col substitutes">
 									<template for:each={match.fullEntry.home_team_lineup.substitutes} for:item="player">
 										<div key={player.shirt_number}  class="slds-p-around_xx-small slds-size_1-of-1">
 											{player.shirt_number} {player.name}
 										</div>
 									</template>
-								</div>
+								</div> -->
 							</div>
 						</div>
-						<div class="slds-size_1-of-3">
+						<!-- <div class="slds-size_1-of-3">
 							<div class="slds-grid slds-grid_align-space">
 								<div class=slds-col>
 
@@ -112,23 +112,23 @@
 
 								</div>
 							</div>
-						</div>
-						<div class="slds-size_1-of-3 slds-p-around_x-small">
+						</div> -->
+						<div class="slds-size_1-of-2 slds-p-around_x-small">
 							<div class="slds-grid slds-grid_align-space">
 								<div class="slds-col starting_eleven">
 									<template for:each={match.fullEntry.away_team_lineup.starting_eleven} for:item="player">
-										<div key={player.shirt_number} class="slds-p-around_xx-small slds-size_1-of-1">
-											{player.shirt_number} {player.name}
+										<div key={player.shirt_number} class="slds-p-around_xx-small slds-size_1-of-1 slds-text-align_center">
+											{player.shirt_number} {player.name} {player.position}
 										</div>
 									</template>
 								</div>
-								<div class="slds-col substitutes">
+								<!-- <div class="slds-col substitutes">
 									<template for:each={match.fullEntry.away_team_lineup.substitutes} for:item="player">
 										<div key={player.shirt_number}  class="slds-p-around_xx-small slds-size_1-of-1">
 											{player.shirt_number} {player.name}
 										</div>
 									</template>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>
