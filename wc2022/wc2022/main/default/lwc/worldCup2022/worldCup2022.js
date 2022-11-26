@@ -52,6 +52,7 @@ export default class WorldCup2022 extends LightningElement {
         match.completed = entry.status === 'completed';
         match.in_progress = entry.status !== 'completed' && entry.status !== 'future_scheduled';
         match.score = `${entry.home_team.goals} - ${entry.away_team.goals}`
+        match.time = entry.time;
         return match;
     }
 
