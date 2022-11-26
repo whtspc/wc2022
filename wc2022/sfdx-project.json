@@ -1,8 +1,12 @@
 {
   "packageDirectories": [
     {
-      "path": "force-app",
+      "path": "wc2022",
       "default": true
+    },
+    {
+      "path": "demo",
+      "default": false
     }
   ],
   "name": "wc2022",
