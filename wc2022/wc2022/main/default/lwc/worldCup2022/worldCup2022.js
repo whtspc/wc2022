@@ -1,11 +1,12 @@
 import {LightningElement, track} from 'lwc';
-import WC_QATAR_LOGO from '@salesforce/resourceUrl/wc_qatar_logo';
+import WC_QATAR_LOGO from '@salesforce/resourceUrl/wc_qatar_logo_2';
 import FlagService from "c/flagService";
 
 export default class WorldCup2022 extends LightningElement {
 
     @track data = [];
     @track currentMatch;
+    nomatchtoday;
 
     logo = WC_QATAR_LOGO;
     @track flags = {
@@ -51,6 +52,7 @@ export default class WorldCup2022 extends LightningElement {
         match.completed = entry.status === 'completed';
         match.in_progress = entry.status !== 'completed' && entry.status !== 'future_scheduled';
         match.score = `${entry.home_team.goals} - ${entry.away_team.goals}`
+        match.time = entry.time;
         return match;
     }
 
@@ -66,6 +68,7 @@ export default class WorldCup2022 extends LightningElement {
 
             if(!homeCode.flag) {
                homeCode.flag = this.flagService.getFlag(homeCode.ISO);
+               console.log('flag' + homeCode.flag);
             }
             if(!awayCode.flag) {
                 awayCode.flag = this.flagService.getFlag(awayCode.ISO);
@@ -84,6 +87,7 @@ export default class WorldCup2022 extends LightningElement {
             data.push(match);
         });
 
+        if (data.length<1){this.nomatchtoday = true};
         return data;
 
     }

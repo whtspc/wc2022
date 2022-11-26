@@ -2,11 +2,9 @@
 
 	<article class="slds-card">
 		<div class="slds-card__header slds-grid">
-
 			<header class="slds-media slds-media_center slds-grid_align-center slds-has-flexi-truncate">
-				<img src={logo} class="wc-logo"/>
+				<img src={logo} class="wc-logo" />
 			</header>
-
 		</div>
 		<div class="slds-card__body">
 			<div if:true={currentMatch} class="slds-grid slds-grid_align-space slds-size_1-of-1">
@@ -19,7 +17,7 @@
 				<div class="slds-col slds-grid slds-grid_vertical-align-center">
 					<div class="slds-size_1-of-1 slds-text-align_center">
 						<p class="head">
-							<span class="assistive-text">'85</span>
+							<span class="assistive-text">{currentMatch.time}</span>
 							{currentMatch.score}
 						</p>
 					</div>
@@ -31,14 +29,16 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="slds-grid slds-size_1-of-1 slds-p-vertical_medium slds-wrap">
-				<h2 class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_large slds-p-vertical_medium">
+				<h2
+					class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_large slds-p-vertical_medium">
 					Today's Matches</h2>
+
+					<p if:true={nomatchtoday} class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_medium slds-p-vertical_medium blackandbold">No match today 😥</p>
 
 				<template for:each={data} for:item="match">
 					<div key={match.kick_off}
-						 class="slds-grid slds-grid_align-space slds-wrap slds-size_1-of-1 slds-p-vertical_small">
+						class="slds-grid slds-grid_align-space slds-grid_vertical-align-center slds-wrap slds-size_1-of-1 slds-p-vertical_x-small horizontalRule">
 						<div class="slds-col slds-size_1-of-3">
 							<div class="slds-text-align_center">
 								<span class="flag flag__small">{match.home_team_flag}</span>
@@ -49,18 +49,15 @@
 							<div class="slds-size_1-of-1 slds-text-align_center">
 								<p if:false={match.completed}>
 
-									<lightning-formatted-date-time
-											value={match.kick_off}></lightning-formatted-date-time>
-									<br/>
-									<lightning-formatted-date-time value={match.kick_off} hour="2-digit"
-																   minute="2-digit"></lightning-formatted-date-time>
-									<br/>
+									<lightning-formatted-date-time class="blackandbold" value={match.kick_off}
+										hour="2-digit" minute="2-digit"></lightning-formatted-date-time>
+									<br />
 									<span>{match.venue}</span>
 								</p>
 								<p if:true={match.completed}>
 
 									{match.score}
-									<br/>
+									<br />
 									<span>{match.venue}</span>
 								</p>
 							</div>
@@ -71,9 +68,13 @@
 								<p class="">{match.away_team}</p>
 							</div>
 						</div>
+						<hr>
 					</div>
 				</template>
 			</div>
 		</div>
+		<footer class="slds-card__footer rainbow">
+			<span>Made with ❤ by <a class="blackandbold" href="https://www.brightfox.eu">Brightfox</a></span>
+		</footer>
 	</article>
 </template>
