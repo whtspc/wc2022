@@ -7,7 +7,7 @@
 			</header>
 		</div>
 		<div class="slds-card__body">
-			<div if:true={currentMatch} class="slds-grid slds-grid_align-space slds-size_1-of-1">
+			<div if:true={currentMatch} class="slds-grid slds-grid_align-space slds-size_1-of-1 slds-wrap">
 				<div class="slds-col">
 					<div class="slds-size_1-of-1 slds-text-align_center">
 						<span class="flag">{currentMatch.home_team_flag}</span>
@@ -29,13 +29,30 @@
 					</div>
 				</div>
 			</div>
-			<div class="slds-grid slds-size_1-of-1 slds-p-vertical_medium slds-wrap">
+			<div if:true={currentMatch} class="slds-grid slds-wrap slds-text-align_center slds-p-top_large">
+				<div class="slds-col wc-gradient slds-size_1-of-1">
+					<p class="slds-text-heading_small slds-text-align_center slds-text-title_bold slds-p-around_xx-small">Story</p>
+				</div>
+				<div class="slds-col slds-size_1-of-3 slds-grid slds-wrap">
+					<div class="slds-col slds-p-around_x-small slds-size_1-of-1">'10 Booking Some player</div>
+					<div class="slds-col slds-p-around_x-small slds-size_1-of-1">'15 Booking Some player</div>
+					<div class="slds-col slds-p-around_x-small slds-size_1-of-1">'30 Booking Some player</div>
+				</div>
+				<div class="slds-col slds-size_1-of-3">
+
+				</div>
+				<div class="slds-col slds-size_1-of-3 slds-grid slds-wrap">
+					<div class="slds-col slds-p-around_x-small slds-size_1-of-1">'42 Booking Some player</div>
+					<div class="slds-col slds-p-around_x-small slds-size_1-of-1">'45 Booking Some player</div>
+					<div class="slds-col slds-p-around_x-small slds-size_1-of-1">'52 Booking Some player</div>
+				</div>
+			</div>
+			<div class="slds-grid slds-size_1-of-1 slds-wrap">
 				<h2
-					class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_large slds-p-vertical_medium">
+					class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_large   slds-p-vertical_x-small">
 					Today's Matches</h2>
 
 					<p if:true={nomatchtoday} class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_medium slds-p-vertical_medium blackandbold">Unfortunately there are no matches scheduled for today 😥</p>
-
 				<template for:each={data} for:item="match">
 					<div key={match.kick_off}
 						class="slds-grid slds-grid_align-space slds-grid_vertical-align-center slds-wrap slds-size_1-of-1 slds-p-vertical_x-small horizontalRule">
@@ -79,56 +96,47 @@
 								<p class="">{match.away_team}</p>
 							</div>
 						</div>
-						<hr>
+						<hr />
 					</div>
 					<div key={match.fullEntry.id} if:true={match.show_statistics} class="slds-col slds-grid slds-grid_align-space slds-wrap statistics">
-						<div class="slds-col slds-size_1-of-1">
-							<p class="slds-text-heading_small slds-text-align_center slds-text-title_bold slds-p-top_medium">Line-ups</p>
+						<div class="slds-col slds-size_1-of-1 wc-gradient">
+							<p class="slds-text-heading_small slds-text-align_center slds-text-title_bold slds-p-around_xx-small">Line-ups</p>
 						</div>
 						<div class="slds-size_1-of-2 slds-p-around_x-small">
 							<div class="slds-grid slds-grid_align-space">
 								<div class="slds-col starting_eleven">
 									<template for:each={match.fullEntry.home_team_lineup.starting_eleven} for:item="player">
-										<div key={player.shirt_number}  class="slds-p-around_xx-small slds-size_1-of-1 slds-text-align_center">
-											{player.shirt_number} {player.name} {player.position}
+										<div key={player.shirt_number}  class="slds-p-around_xx-small slds-size_1-of-1">
+											{player.shirt_number} &nbsp; {player.name}
 										</div>
 									</template>
 								</div>
-								<!-- <div class="slds-col substitutes">
+								<div class="slds-col substitutes">
 									<template for:each={match.fullEntry.home_team_lineup.substitutes} for:item="player">
 										<div key={player.shirt_number}  class="slds-p-around_xx-small slds-size_1-of-1">
-											{player.shirt_number} {player.name}
+											{player.shirt_number}  &nbsp; {player.name}
 										</div>
 									</template>
-								</div> -->
+								</div>
 							</div>
 						</div>
-						<!-- <div class="slds-size_1-of-3">
-							<div class="slds-grid slds-grid_align-space">
-								<div class=slds-col>
 
-								</div>
-								<div class=slds-col>
-
-								</div>
-							</div>
-						</div> -->
 						<div class="slds-size_1-of-2 slds-p-around_x-small">
 							<div class="slds-grid slds-grid_align-space">
 								<div class="slds-col starting_eleven">
 									<template for:each={match.fullEntry.away_team_lineup.starting_eleven} for:item="player">
-										<div key={player.shirt_number} class="slds-p-around_xx-small slds-size_1-of-1 slds-text-align_center">
-											{player.shirt_number} {player.name} {player.position}
+										<div key={player.shirt_number} class="slds-p-around_xx-small slds-size_1-of-1">
+											{player.shirt_number} &nbsp; {player.name}
 										</div>
 									</template>
 								</div>
-								<!-- <div class="slds-col substitutes">
+								<div class="slds-col substitutes">
 									<template for:each={match.fullEntry.away_team_lineup.substitutes} for:item="player">
 										<div key={player.shirt_number}  class="slds-p-around_xx-small slds-size_1-of-1">
-											{player.shirt_number} {player.name}
+											{player.shirt_number} &nbsp; {player.name}
 										</div>
 									</template>
-								</div> -->
+								</div>
 							</div>
 						</div>
 					</div>

@@ -55,3 +55,9 @@ p.head {
     font-size: .7rem;
     font-weight: 200;
 }
+
+.wc-gradient {
+    color: #fff;
+    background: rgb(139,0,41);
+    background: linear-gradient(150deg, rgba(139,0,41,1) 0%, rgba(32,0,13,1) 100%);
+}
