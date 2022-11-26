@@ -6,6 +6,7 @@ export default class WorldCup2022 extends LightningElement {
 
     @track data = [];
     @track currentMatch;
+    nomatchtoday;
 
     logo = WC_QATAR_LOGO;
     @track flags = {
@@ -85,6 +86,7 @@ export default class WorldCup2022 extends LightningElement {
             data.push(match);
         });
 
+        if (data.length<1){this.nomatchtoday = true};
         return data;
 
     }

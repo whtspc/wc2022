@@ -34,6 +34,8 @@
 					class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_large slds-p-vertical_medium">
 					Today's Matches</h2>
 
+					<p if:true={nomatchtoday} class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_medium slds-p-vertical_medium blackandbold">No match today 😥</p>
+
 				<template for:each={data} for:item="match">
 					<div key={match.kick_off}
 						class="slds-grid slds-grid_align-space slds-grid_vertical-align-center slds-wrap slds-size_1-of-1 slds-p-vertical_x-small horizontalRule">
