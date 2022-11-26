@@ -36,7 +36,7 @@
 
 				<template for:each={data} for:item="match">
 					<div key={match.kick_off}
-						class="slds-grid slds-grid_align-space slds-wrap slds-size_1-of-1 slds-p-vertical_small">
+						class="slds-grid slds-grid_align-space slds-grid_vertical-align-center slds-wrap slds-size_1-of-1 slds-p-vertical_small">
 						<div class="slds-col slds-size_1-of-3">
 							<div class="slds-text-align_center">
 								<span class="flag flag__small">{match.home_team_flag}</span>
@@ -47,8 +47,8 @@
 							<div class="slds-size_1-of-1 slds-text-align_center">
 								<p if:false={match.completed}>
 
-									<lightning-formatted-date-time class="blackandbold" value={match.kick_off} hour="2-digit"
-										minute="2-digit"></lightning-formatted-date-time>
+									<lightning-formatted-date-time class="blackandbold" value={match.kick_off}
+										hour="2-digit" minute="2-digit"></lightning-formatted-date-time>
 									<br />
 									<span>{match.venue}</span>
 								</p>
