@@ -118,8 +118,6 @@ export default class FlagService {
         let char1 = String.fromCodePoint(base+offset1) // first unicode code point for flag
         let char2 = String.fromCodePoint(base+offset2) // second unicode code point for flag
 
-        console.log(`${char1}${char2}`);
-
         return `${char1}${char2}` // combine unicode code points to make the flag emoji
     }
 

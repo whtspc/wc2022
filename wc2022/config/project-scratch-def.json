@@ -1,7 +1,10 @@
 {
-  "orgName": "Demo company",
+  "orgName": "jw-wc-dev",
   "edition": "Developer",
-  "features": ["EnableSetPasswordInApi"],
+  "hasSampleData": false,
+  "features": [
+    "EnableSetPasswordInApi"
+  ],
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
