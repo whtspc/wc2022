@@ -81,7 +81,7 @@ export default class FlagService {
             ISO: 'RS'
         },
         ESP: {
-            ISO: 'SP'
+            ISO: 'ES'
         },
         SUI: {
             ISO: 'CH'

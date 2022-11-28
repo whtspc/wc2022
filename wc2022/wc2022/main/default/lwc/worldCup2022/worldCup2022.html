@@ -2,26 +2,28 @@
 
 	<article class="slds-card">
 		<div class="slds-card__header slds-grid slds-p-top_none slds-p-left_none slds-p-right_none">
-			<header class="slds-media slds-media_center slds-grid_align-center slds-has-flexi-truncate">
-				<img src={logo} class="wc-logo" />
+			<header class="slds-media slds-media_center slds-grid_align-center slds-has-flexi-truncate wc-gradient">
+				<img src={logo} class="wc-logo"/>
 			</header>
 		</div>
 		<div class="slds-card__body">
-			<div if:true={currentMatch} class="slds-grid slds-grid_align-space slds-size_1-of-1">
+			<div if:true={currentMatch} class="slds-grid slds-grid_align-space">
 				<div class="slds-col">
 					<div class="slds-size_1-of-1 slds-text-align_center">
 						<span class="flag">{currentMatch.home_team_flag}</span>
 						<p class="head">{currentMatch.home_team}</p>
 					</div>
 				</div>
-				<div class="slds-col slds-grid slds-grid_vertical-align-center">
-					<div class="slds-size_1-of-1 slds-text-align_center">
-						<p class="head">
-							<span class="assistive-text">{currentMatch.time}</span>
-							{currentMatch.score}
-						</p>
+					<div class="slds-grid slds-grid_vertical-align-center">
+						<div class="slds-size_1-of-1 slds-text-align_center">
+							<p class="head">
+								<span class="assistive-text">{currentMatch.time}</span>
+								{currentMatch.score} <br/>
+								<span class="assistive-text slds-p-vertical_small" style="color: #000"><lightning-icon class="wc-gradient"
+										icon-name="custom:custom82" size="x-small"></lightning-icon> {currentMatch.referee.name}</span>
+							</p>
+						</div>
 					</div>
-				</div>
 				<div class="slds-col">
 					<div class="slds-size_1-of-1 slds-text-align_center">
 						<span class="flag">{currentMatch.away_team_flag}</span>
@@ -29,16 +31,39 @@
 					</div>
 				</div>
 			</div>
-			<div class="slds-grid slds-size_1-of-1 slds-p-vertical_medium slds-wrap">
+			<div if:true={currentMatch} class="slds-grid slds-wrap slds-text-align_center slds-p-top_large">
+				<div class="slds-col wc-gradient slds-size_1-of-1">
+					<p class="slds-text-heading_small slds-text-align_center slds-text-title_bold slds-p-around_xx-small">
+						Line-ups</p>
+				</div>
+				<div class="slds-col starting_eleven">
+					<template for:each={currentMatch.fullEntry.home_team_lineup.starting_eleven} for:item="player">
+						<div key={player.shirt_number} class="slds-p-around_xx-small slds-size_1-of-1">
+							{player.shirt_number} &nbsp; {player.name}
+						</div>
+					</template>
+				</div>
+				<div class="slds-col slds-size_1-of-3">
+
+				</div>
+				<div class="slds-col starting_eleven">
+					<template for:each={currentMatch.fullEntry.away_team_lineup.starting_eleven} for:item="player">
+						<div key={player.shirt_number} class="slds-p-around_xx-small slds-size_1-of-1">
+							{player.shirt_number} &nbsp; {player.name}
+						</div>
+					</template>
+				</div>
+			</div>
+			<div class="slds-grid slds-size_1-of-1 slds-wrap">
 				<h2
-					class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_large slds-p-vertical_medium">
+						class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_large   slds-p-vertical_x-small">
 					Today's Matches</h2>
-
-					<p if:true={nomatchtoday} class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_medium slds-p-vertical_medium blackandbold">Unfortunately there are no matches scheduled for today 😥</p>
-
+				<p if:true={nomatchtoday}
+				   class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_medium slds-p-vertical_medium blackandbold">
+					Unfortunately there are no matches scheduled for today 😥</p>
 				<template for:each={data} for:item="match">
 					<div key={match.kick_off}
-						class="slds-grid slds-grid_align-space slds-grid_vertical-align-center slds-wrap slds-size_1-of-1 slds-p-vertical_x-small horizontalRule">
+						 class="slds-grid slds-grid_align-space slds-grid_vertical-align-center slds-wrap slds-size_1-of-1 slds-p-vertical_x-small horizontalRule">
 						<div class="slds-col slds-size_1-of-3">
 							<div class="slds-text-align_center">
 								<span class="flag flag__small">{match.home_team_flag}</span>
@@ -50,25 +75,34 @@
 								<p if:true={match.inFuture}>
 
 									<lightning-formatted-date-time class="blackandbold" value={match.kick_off}
-										hour="2-digit" minute="2-digit"></lightning-formatted-date-time>
-									<br />
+																   hour="2-digit"
+																   minute="2-digit"></lightning-formatted-date-time>
+									<br/>
 									<span>{match.venue}</span>
 								</p>
 								<p if:true={match.completed}>
 
 									{match.score}
-									<br />
+									<br/>
 									<span>{match.venue}</span>
 									<br/>
-									<span class="slds-p-around_small" style="cursor: pointer" onclick={onShowStatisticsPressed} data-match={match.fullEntry.id} ><lightning-icon class="slds-p-horizontal_xx-small" icon-name="utility:activity" size="x-small" alternative-text="lineups" ></lightning-icon>Show Lineups</span>
+									<span class="slds-p-around_small" style="cursor: pointer"
+										  onclick={onShowStatisticsPressed} data-match={match.fullEntry.id}><lightning-icon
+											class="slds-p-horizontal_xx-small" icon-name="utility:activity"
+											size="x-small"
+											alternative-text="lineups"></lightning-icon>Show Lineups</span>
 								</p>
 								<p if:true={match.in_progress}>
 
 									<span class="slds-text-color_destructive slds-text-title_bold">{match.score}</span>
-									<br />
+									<br/>
 									<span>{match.venue}</span>
 									<br/>
-									<span class="slds-p-around_small" style="cursor: pointer" onclick={onShowStatisticsPressed} data-match={match.fullEntry.id} ><lightning-icon class="slds-p-horizontal_xx-small" icon-name="utility:activity" size="x-small" alternative-text="lineups" ></lightning-icon>Show Lineups</span>
+									<span class="slds-p-around_small" style="cursor: pointer"
+										  onclick={onShowStatisticsPressed} data-match={match.fullEntry.id}><lightning-icon
+											class="slds-p-horizontal_xx-small" icon-name="utility:activity"
+											size="x-small"
+											alternative-text="lineups"></lightning-icon>Show Lineups</span>
 								</p>
 
 							</div>
@@ -79,56 +113,51 @@
 								<p class="">{match.away_team}</p>
 							</div>
 						</div>
-						<hr>
+						<hr/>
 					</div>
-					<div key={match.fullEntry.id} if:true={match.show_statistics} class="slds-col slds-grid slds-grid_align-space slds-wrap statistics">
-						<div class="slds-col slds-size_1-of-1">
-							<p class="slds-text-heading_small slds-text-align_center slds-text-title_bold slds-p-top_medium">Line-ups</p>
+					<div key={match.fullEntry.id} if:true={match.show_statistics}
+						 class="slds-col slds-grid slds-grid_align-space slds-wrap statistics">
+						<div class="slds-col slds-size_1-of-1 wc-gradient">
+							<p class="slds-text-heading_small slds-text-align_center slds-text-title_bold slds-p-around_xx-small">
+								Line-ups</p>
 						</div>
 						<div class="slds-size_1-of-2 slds-p-around_x-small">
 							<div class="slds-grid slds-grid_align-space">
 								<div class="slds-col starting_eleven">
-									<template for:each={match.fullEntry.home_team_lineup.starting_eleven} for:item="player">
-										<div key={player.shirt_number}  class="slds-p-around_xx-small slds-size_1-of-1 slds-text-align_center">
-											{player.shirt_number} {player.name} {player.position}
+									<template for:each={match.fullEntry.home_team_lineup.starting_eleven}
+											  for:item="player">
+										<div key={player.shirt_number} class="slds-p-around_xx-small slds-size_1-of-1">
+											{player.shirt_number} &nbsp; {player.name}
 										</div>
 									</template>
 								</div>
-								<!-- <div class="slds-col substitutes">
+								<div class="slds-col substitutes">
 									<template for:each={match.fullEntry.home_team_lineup.substitutes} for:item="player">
-										<div key={player.shirt_number}  class="slds-p-around_xx-small slds-size_1-of-1">
-											{player.shirt_number} {player.name}
+										<div key={player.shirt_number} class="slds-p-around_xx-small slds-size_1-of-1">
+											{player.shirt_number} &nbsp; {player.name}
 										</div>
 									</template>
-								</div> -->
+								</div>
 							</div>
 						</div>
-						<!-- <div class="slds-size_1-of-3">
-							<div class="slds-grid slds-grid_align-space">
-								<div class=slds-col>
 
-								</div>
-								<div class=slds-col>
-
-								</div>
-							</div>
-						</div> -->
 						<div class="slds-size_1-of-2 slds-p-around_x-small">
 							<div class="slds-grid slds-grid_align-space">
 								<div class="slds-col starting_eleven">
-									<template for:each={match.fullEntry.away_team_lineup.starting_eleven} for:item="player">
-										<div key={player.shirt_number} class="slds-p-around_xx-small slds-size_1-of-1 slds-text-align_center">
-											{player.shirt_number} {player.name} {player.position}
+									<template for:each={match.fullEntry.away_team_lineup.starting_eleven}
+											  for:item="player">
+										<div key={player.shirt_number} class="slds-p-around_xx-small slds-size_1-of-1">
+											{player.shirt_number} &nbsp; {player.name}
 										</div>
 									</template>
 								</div>
-								<!-- <div class="slds-col substitutes">
+								<div class="slds-col substitutes">
 									<template for:each={match.fullEntry.away_team_lineup.substitutes} for:item="player">
-										<div key={player.shirt_number}  class="slds-p-around_xx-small slds-size_1-of-1">
-											{player.shirt_number} {player.name}
+										<div key={player.shirt_number} class="slds-p-around_xx-small slds-size_1-of-1">
+											{player.shirt_number} &nbsp; {player.name}
 										</div>
 									</template>
-								</div> -->
+								</div>
 							</div>
 						</div>
 					</div>

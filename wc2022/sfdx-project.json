@@ -1,16 +1,24 @@
 {
-  "packageDirectories": [
-    {
-      "path": "wc2022",
-      "default": true
-    },
-    {
-      "path": "demo",
-      "default": false
+    "packageDirectories": [
+        {
+            "path": "wc2022",
+            "default": true,
+            "package": "World Cup Viewer",
+            "versionName": "Version 1.0",
+            "versionNumber": "1.0.2.NEXT"
+        },
+        {
+            "path": "demo",
+            "default": false
+        }
+    ],
+    "name": "wc2022",
+    "namespace": "",
+    "sfdcLoginUrl": "https://login.salesforce.com",
+    "sourceApiVersion": "55.0",
+    "packageAliases": {
+        "World Cup Viewer": "0Ho7Q000000blg0SAA",
+        "World Cup Viewer@1.0.0-1": "04t7Q000000hOAUQA2",
+        "World Cup Viewer@1.0.1-1": "04t7Q000000hOAZQA2"
     }
-  ],
-  "name": "wc2022",
-  "namespace": "",
-  "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "55.0"
 }
